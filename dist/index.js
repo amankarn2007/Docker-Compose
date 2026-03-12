@@ -1,9 +1,11 @@
 import express from "express";
 import { PrismaClient } from "./generated/prisma/client.js";
+import { PrismaPg } from "@prisma/adapter-pg";
 const app = express();
 app.use(express.json);
-//@ts-ignore
-const prisma = new PrismaClient();
+const prisma = new PrismaClient({
+    adapter: new PrismaPg({ connectionString: process.env.DATABASE_URL })
+});
 app.get("/", async (req, res) => {
     const users = await prisma.user.findMany();
     res.json({
