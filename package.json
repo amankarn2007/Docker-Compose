@@ -7,7 +7,8 @@
   "scripts": {
     "build": "tsc -b",
     "start": "node ./dist/index.js",
-    "dev": "pnpm build && pnpm start"
+    "dev": "pnpm build && pnpm start",
+    "dev:docker": "npx prisma migrate dev && pnpm start"
   },
   "keywords": [],
   "author": "",
@@ -21,6 +22,7 @@
     "typescript": "^5.9.3"
   },
   "devDependencies": {
+    "@prisma/engines": "^7.5.0",
     "@types/node": "^25.4.0",
     "dotenv": "^17.3.1",
     "prisma": "^7.5.0"
